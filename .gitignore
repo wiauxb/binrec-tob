@@ -33,3 +33,4 @@ venv/
 s2e/
 node_modules/
 binrec/web/uploads
+programs/
