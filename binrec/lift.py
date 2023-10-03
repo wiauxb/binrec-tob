@@ -15,6 +15,7 @@ from .errors import BinRecError
 from .lib import binrec_lift, binrec_link, convert_lib_error
 
 logger = logging.getLogger("binrec.lift")
+logger.setLevel(logging.DEBUG)
 
 DATA_IMPORT_PATTERN = re.compile(
     r"^\s*\d+:\s+"  # symbol index
@@ -69,6 +70,8 @@ def prep_bitcode_for_linkage(
     if not destination.is_absolute():
         destination = working_dir / destination
     dest = str(destination)
+
+    logger.debug("preparing capture bitcode for linkage: %s to %s", src, dest)
 
     try:
         binrec_lift.link_prep_1(trace_filename=src, destination=tmp, working_dir=cwd)
@@ -210,9 +213,11 @@ def _extract_dependencies(trace_dir: Path) -> None:
     try:
         ldd = subprocess.check_output(["ldd", str(binary)])
     except subprocess.CalledProcessError:
-        raise BinRecError(
-            f"failed to extract all dependencies from binary: {trace_dir.parent.name}"
-        )
+        # raise BinRecError(
+        #     f"failed to extract all dependencies from binary: {trace_dir.parent.name}"
+        # )
+        logger.warning("Not a dynamic executable.")
+        ldd = b''
 
     for line in ldd.decode().splitlines(keepends=False):
         parts = line.strip().split("=>", 1)

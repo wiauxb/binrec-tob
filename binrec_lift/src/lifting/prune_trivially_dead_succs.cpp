@@ -4,6 +4,7 @@
 #include "pass_utils.hpp"
 #include <llvm/IR/CFG.h>
 #include <set>
+#include <iostream>
 
 using namespace binrec;
 using namespace llvm;
@@ -69,7 +70,10 @@ auto PruneTriviallyDeadSuccsPass::run(Module &m, ModuleAnalysisManager &am) -> P
     for (Function &f : m) {
         if (!f.getName().startswith("Func_"))
             continue;
-
+        // cout << "\n-";
+        // f.printAsOperand(outs(), false);
+        // cout << ":\n\t";
+        // f.print(outs());
         for (BasicBlock &bb : f) {
             if (!isRecoveredBlock(&bb))
                 continue;
@@ -90,8 +94,16 @@ auto PruneTriviallyDeadSuccsPass::run(Module &m, ModuleAnalysisManager &am) -> P
 
                 // We know the last stored PC, assert that is in the current
                 // successor list and remove everything else from the list
+                // cout << "Node: ";
+                // bb.printAsOperand(outs(), false);
+                // cout << "\n";
                 vector<BasicBlock *> succs;
                 getBlockSuccs(&bb, succs);
+                // cout << "\tTmp: ";
+                // for (BasicBlock *tbb : succs) {
+                //     tbb->printAsOperand(outs(), false);
+                //     cout << "\n";
+                // }
                 BasicBlock *only_succ = find_successor(succs, last_stored_pc);
 
                 if (!only_succ) {

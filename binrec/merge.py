@@ -11,6 +11,7 @@ from .errors import BinRecError
 from .lift import prep_bitcode_for_linkage
 
 logger = logging.getLogger("binrec.merge")
+logger.setLevel(logging.DEBUG)
 
 
 def _link_bitcode(base: Path, source: Path, destination: Path):
@@ -67,7 +68,7 @@ def merge_bitcode(capture_dirs: List[Path], destination: Path) -> None:
     - Prepares each captured bitcode, ``captured.bc``, for linkage
     - Links all the preparsed captured bitcode into a single bitcode file,
       ``{destination}/captured.bc``
-    - Disassembles the liked capture bitcode to LLVM assembly code,
+    - Disassembles the linked capture bitcode to LLVM assembly code,
       ``{destination}/captured.ll``
     - Merges all the trace information JSON files to a single trace info,
       ``{destination}/traceInfo.json``

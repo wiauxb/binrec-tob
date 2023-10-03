@@ -6,8 +6,10 @@
 #include <llvm/ADT/SmallVector.h>
 #include <llvm/IR/DebugInfo.h>
 #include <llvm/IR/IRBuilder.h>
+#include <iostream>
 
 using namespace llvm;
+using namespace std;
 
 namespace binrec {
 
@@ -121,13 +123,19 @@ namespace binrec {
         std::vector<StringRef> const &names,
         SetVector<Instruction *> &toerase)
     {
+        // inst->print(outs());
+        // std::cout << ": " << inst->getOpcodeName(inst->getOpcode()) << "\n";
         if (auto *gep = dyn_cast<GetElementPtrInst>(inst)) {
+            // std::cout << "\tGEP\n";
             toerase.insert(replace_gep(gep, env_ty, names));
         } else if (isa<LoadInst>(inst) || isa<PHINode>(inst) || isa<PtrToIntInst>(inst)) {
             for (auto use : inst->users())
                 process_instruction(cast<Instruction>(use), env_ty, names, toerase);
         } else if (isa<CallInst>(inst)) {
             // Argument to a function call. No need to handle, explicitly.
+            return;
+        } else if (isa<AddOperator>(inst)){
+            cout << "Add\n";
             return;
         } else {
             inst->print(errs());
@@ -160,8 +168,12 @@ namespace binrec {
         SetVector<Instruction *> toerase;
 
         // Handle references to the global env var
-        for (User *use : env->users())
+        for (User *use : env->users()){
+            // cout << "Use of ";
+            // use->print(outs());
+            // cout << "\n";
             process_instruction(cast<Instruction>(use), env_ty, names, toerase);
+        }
 
         // Each of the lifted functions have env var as argument, replace all
         // usage in those functions with global variables.

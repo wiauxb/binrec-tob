@@ -1,0 +1,40 @@
+====================
+Func_8049070 :
+  store i32 134516848, i32* @PC, align 4, !inststart !6
+  store i32 134516852, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134529040, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049030 :
+  store i32 %tmp2_v, i32* @R_ESP, align 4
+  store i32 134516790, i32* @PC, align 4, !inststart !6
+  %tmp0_v1 = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134529032, i32 33, i8* null)
+  store i32 %tmp0_v1, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049190 :
+  store i32 134517136, i32* @PC, align 4, !inststart !6
+  store i32 134517024, i32* @PC, align 4, !inststart !6
+  ret i64 140432605340672, !lastpc !7
+====================
+Func_8049120 :
+  store i32 0, i32* @cc_dst, align 4
+  store i32 134517046, i32* @PC, align 4, !inststart !6
+  store i32 40, i32* @cc_op, align 4
+  store i32 134517080, i32* @PC, align 4, !inststart !6
+  ret i64 140432605341057, !lastpc !7
+====================
+Func_8049060 :
+  store i32 134516832, i32* @PC, align 4, !inststart !6
+  store i32 134516836, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134529036, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_80490E0 :
+  store i32 0, i32* @cc_dst, align 4
+  store i32 134516970, i32* @PC, align 4, !inststart !6
+  store i32 16, i32* @cc_op, align 4
+  store i32 134517008, i32* @PC, align 4, !inststart !6
+  ret i64 140432605438529, !lastpc !7

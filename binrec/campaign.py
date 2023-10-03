@@ -701,7 +701,8 @@ def patch_s2e_project(project: str, existing_patch_ok: bool = False) -> bool:
 
     # verify that we found the couple locations we need
     if execute_sample_index < 0:
-        raise ValueError("project bootstrap does not contain call to execute sample")
+        # raise ValueError("project bootstrap does not contain call to execute sample")
+        logger.warn("file is statically linked.")
     elif execute_call_index < 0:
         raise ValueError("project bootstrap does not contain call to execute function")
 

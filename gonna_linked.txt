@@ -1,0 +1,148 @@
+====================
+Func_80492F0 :
+  store i32 134517488, i32* @PC, align 4, !inststart !6
+  store i32 134517492, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537252, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049030 :
+  store i32 %tmp2_v, i32* @R_ESP, align 4
+  store i32 134516790, i32* @PC, align 4, !inststart !6
+  %tmp0_v1 = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537224, i32 33, i8* null)
+  store i32 %tmp0_v1, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_80495F0 :
+  store i32 134518256, i32* @PC, align 4, !inststart !6
+  store i32 134518144, i32* @PC, align 4, !inststart !6
+  ret i64 140402606648448, !lastpc !7
+====================
+Func_8049580 :
+  store i32 0, i32* @cc_dst, align 4
+  store i32 134518166, i32* @PC, align 4, !inststart !6
+  store i32 40, i32* @cc_op, align 4
+  store i32 134518200, i32* @PC, align 4, !inststart !6
+  ret i64 140402606648833, !lastpc !7
+====================
+Func_80493C0 :
+  store i32 134517696, i32* @PC, align 4, !inststart !6
+  store i32 134517700, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537304, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049390 :
+  store i32 134517648, i32* @PC, align 4, !inststart !6
+  store i32 134517652, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537292, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049370 :
+  store i32 134517616, i32* @PC, align 4, !inststart !6
+  store i32 134517620, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537284, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049430 :
+  store i32 134517808, i32* @PC, align 4, !inststart !6
+  store i32 134517812, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537332, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_80493A0 :
+  store i32 134517664, i32* @PC, align 4, !inststart !6
+  store i32 134517668, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537296, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049350 :
+  store i32 134517584, i32* @PC, align 4, !inststart !6
+  store i32 134517588, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537276, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049330 :
+  store i32 134517552, i32* @PC, align 4, !inststart !6
+  store i32 134517556, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537268, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_80492E0 :
+  store i32 134517472, i32* @PC, align 4, !inststart !6
+  store i32 134517476, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537248, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049480 :
+  store i32 134517888, i32* @PC, align 4, !inststart !6
+  store i32 134517892, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537352, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_804A315 :
+  store i32 134521621, i32* @PC, align 4, !inststart !6
+  store i32 134522215, i32* @PC, align 4, !inststart !6
+  ret i64 140402607261312, !lastpc !7
+====================
+Func_8049320 :
+  store i32 134517536, i32* @PC, align 4, !inststart !6
+  store i32 134517540, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537264, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_8049470 :
+  store i32 134517872, i32* @PC, align 4, !inststart !6
+  store i32 134517876, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537348, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_804A3CC :
+  call void @helper_stl_mmu(%struct.CPUX86State* %0, i32 %tmp2_v, i32 %eax_v, i32 33, i8* null)
+  store i32 134521813, i32* @PC, align 4, !inststart !6
+  store i32 8, i32* @cc_op, align 4
+  store i32 134521909, i32* @PC, align 4, !inststart !6
+  ret i64 140402607333056, !lastpc !7
+====================
+Func_8049300 :
+  store i32 134517504, i32* @PC, align 4, !inststart !6
+  store i32 134517508, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537256, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_80494D0 :
+  store i32 134517968, i32* @PC, align 4, !inststart !6
+  store i32 134517972, i32* @PC, align 4, !inststart !6
+  %tmp0_v = call i32 @helper_ldl_mmu(%struct.CPUX86State* %0, i32 134537372, i32 33, i8* null)
+  store i32 %tmp0_v, i32* @PC, align 4
+  ret i64 0, !lastpc !7
+====================
+Func_804A43E :
+  store i32 134521918, i32* @PC, align 4, !inststart !6
+  store i32 134522215, i32* @PC, align 4, !inststart !6
+  ret i64 140402607353920, !lastpc !7
+====================
+Func_804A07C :
+  store i32 %tmp0_v, i32* @cc_dst, align 4
+  store i32 134520959, i32* @PC, align 4, !inststart !6
+  store i32 8, i32* @cc_op, align 4
+  store i32 134521128, i32* @PC, align 4, !inststart !6
+  ret i64 140402607365504, !lastpc !7
+====================
+Func_804A131 :
+  store i32 %tmp0_v9, i32* @R_EAX, align 4
+  store i32 134521162, i32* @PC, align 4, !inststart !6
+  call void @helper_stl_mmu(%struct.CPUX86State* %0, i32 %tmp0_v9, i32 0, i32 33, i8* null)
+  store i32 134521188, i32* @PC, align 4, !inststart !6
+  ret i64 140402607366464, !lastpc !7
