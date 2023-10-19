@@ -553,6 +553,12 @@ def new_project(
 add_plugin(\"ELFSelector\")
 add_plugin(\"FunctionMonitor\")
 add_plugin(\"FunctionLog\")
+pluginsConfig.FunctionLog = {{
+    baseDirs = {{
+        "{project_path}"
+    }},
+    saveInterval = 1000 -- export every 1000 basic blocks
+}}
 add_plugin(\"ExportELF\")
 pluginsConfig.ExportELF = {{
     baseDirs = {{

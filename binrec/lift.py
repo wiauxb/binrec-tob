@@ -15,7 +15,6 @@ from .errors import BinRecError
 from .lib import binrec_lift, binrec_link, convert_lib_error
 
 logger = logging.getLogger("binrec.lift")
-logger.setLevel(logging.DEBUG)
 
 DATA_IMPORT_PATTERN = re.compile(
     r"^\s*\d+:\s+"  # symbol index

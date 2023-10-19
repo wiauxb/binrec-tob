@@ -11,7 +11,6 @@ from .errors import BinRecError
 from .lift import prep_bitcode_for_linkage
 
 logger = logging.getLogger("binrec.merge")
-logger.setLevel(logging.DEBUG)
 
 
 def _link_bitcode(base: Path, source: Path, destination: Path):

@@ -27,6 +27,8 @@ namespace s2e::plugins {
     {
         ti = TraceInfo::get();
 
+        m_saveInterval = s2e()->getConfig()->getInt(getConfigKey() + ".saveInterval", 0);
+
         ModuleSelector *selector = (ModuleSelector *)(s2e()->getPlugin("ModuleSelector"));
         selector->onModuleLoad.connect(sigc::mem_fun(*this, &FunctionLog::slotModuleLoad));
         selector->onModuleExecute.connect(sigc::mem_fun(*this, &FunctionLog::slotModuleExecute));
@@ -62,6 +64,7 @@ namespace s2e::plugins {
         if (stateNum >= 0) {
             fileName += "_" + std::to_string(stateNum);
         }
+        s2e()->getDebugStream() << fileName + suffix + "\n";
 
         std::ofstream traceInfoOut(
             s2e()->getOutputFilename(fileName + suffix).c_str(),
@@ -101,6 +104,12 @@ namespace s2e::plugins {
             s2e()->getWarningsStream(state)
                 << "[FunctionLog] Call stack is empty: " << hexval(pc) << "\n";
         }
+        //FIXME improve condition for the save
+        if (m_saveInterval && ++m_saveCounter % m_saveInterval == 0)
+        {
+            saveTraceInfo(state->getID());
+        }
+        
     }
 
     void FunctionLog::onFunctionCall(
@@ -222,6 +231,7 @@ namespace s2e::plugins {
 
     void FunctionLog::slotStateSwitch(S2EExecutionState *state, S2EExecutionState *newState)
     {
+        s2e()->getDebugStream() << "[FunctionLog] StateSwitch !\n";
         int curStateID = state->getID();
         int newStateID = newState->getID();
 

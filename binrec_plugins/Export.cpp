@@ -146,8 +146,10 @@ namespace s2e::plugins {
         else
             assert(m_module == f->getParent() && "LLVM basic blocks saved to different modules");
 
-        if (m_exportInterval && ++m_exportCounter % m_exportInterval == 0)
+        if (m_exportInterval && ++m_exportCounter % m_exportInterval == 0) {
+            s2e()->getDebugStream() << "[Export] triggered exportBB and saveLLVMModule\n";
             saveLLVMModule(true, state->getID());
+        }
 
         return true;
     }

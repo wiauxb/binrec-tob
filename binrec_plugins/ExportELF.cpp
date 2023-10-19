@@ -48,6 +48,8 @@ namespace s2e {
         {
             DECLARE_PLUGINSTATE(ExportELFState, state);
 
+            //s2e()->getDebugStream() << "[ExportELF] slotModuleExecute triggered\n";
+
             if (plgState->doExport) {
                 exportBB(state, pc);
                 addSuccessor(plgState->prevPc, pc);
@@ -66,6 +68,7 @@ namespace s2e {
 
         void ExportELF::slotStateSwitch(S2EExecutionState *state, S2EExecutionState *newState)
         {
+            s2e()->getDebugStream() << "[ExportELF] slotStateSwitch triggered\n";
             saveLLVMModule(false, state->getID());
         }
 

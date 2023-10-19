@@ -27,6 +27,7 @@ namespace s2e::plugins {
 
     protected:
         void saveTraceInfo(int stateNum);
+        unsigned m_saveInterval;
 
     private:
         void slotModuleLoad(S2EExecutionState *state, const ModuleDescriptor &module);
@@ -61,6 +62,8 @@ namespace s2e::plugins {
         uint64_t m_moduleEntryPoint;
         std::set<uint32_t> m_modulePcs;
         std::stack<uint32_t> m_callStack;
+
+        unsigned m_saveCounter;
 
         std::map<int, binrec::TraceInfo *> m_tracesByState;
         std::map<int, uint32_t> m_execPcByState;

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import llvmlite.binding as llvm
 import re
 import graphviz

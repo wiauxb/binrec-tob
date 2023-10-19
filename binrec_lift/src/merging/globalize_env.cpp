@@ -6,7 +6,6 @@
 #include <llvm/ADT/SmallVector.h>
 #include <llvm/IR/DebugInfo.h>
 #include <llvm/IR/IRBuilder.h>
-#include <iostream>
 
 using namespace llvm;
 using namespace std;
@@ -131,11 +130,9 @@ namespace binrec {
         } else if (isa<LoadInst>(inst) || isa<PHINode>(inst) || isa<PtrToIntInst>(inst)) {
             for (auto use : inst->users())
                 process_instruction(cast<Instruction>(use), env_ty, names, toerase);
-        } else if (isa<CallInst>(inst)) {
+        } else if (isa<CallInst>(inst) || isa<OverflowingBinaryOperator>(inst)) {
             // Argument to a function call. No need to handle, explicitly.
-            return;
-        } else if (isa<AddOperator>(inst)){
-            cout << "Add\n";
+            // or Operation on the pointer, ignore
             return;
         } else {
             inst->print(errs());
