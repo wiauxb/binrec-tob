@@ -99,14 +99,19 @@ auto PruneTriviallyDeadSuccsPass::run(Module &m, ModuleAnalysisManager &am) -> P
                 // cout << "\n";
                 vector<BasicBlock *> succs;
                 getBlockSuccs(&bb, succs);
-                // cout << "\tTmp: ";
-                // for (BasicBlock *tbb : succs) {
-                //     tbb->printAsOperand(outs(), false);
-                //     cout << "\n";
-                // }
+
                 BasicBlock *only_succ = find_successor(succs, last_stored_pc);
 
+                //FIXME ERROR "does not have ... in its succesor list"
+                if (succs.size() == 1)
+                    continue;
+
                 if (!only_succ) {
+                    // cout << "\tTmp: ";
+                    // for (BasicBlock *tbb : succs) {
+                    //     tbb->printAsOperand(outs(), false);
+                    //     cout << "\n";
+                    // }
                     LLVM_ERROR(error)
                         << "block " << bb.getName() << " stores PC " << last_stored_pc
                         << " but does not have BB_" << utohexstr(last_stored_pc)
@@ -114,9 +119,6 @@ auto PruneTriviallyDeadSuccsPass::run(Module &m, ModuleAnalysisManager &am) -> P
                            "qemu (-smp 1)";
                     throw binrec::lifting_error{"prune_trivially_dead_succs", error};
                 }
-
-                if (succs.size() == 1)
-                    continue;
 
                 pruned_succs += succs.size() - 1;
                 succs.clear();

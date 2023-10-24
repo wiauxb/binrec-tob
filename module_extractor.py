@@ -3,6 +3,7 @@ import llvmlite.binding as llvm
 import re
 import graphviz
 import argparse
+from find_duplicated_links import find_duplicated_links
 
 def find_terminating_blocks(basic_block):
     # verify there is no other terminating instruction than the last one
@@ -34,12 +35,12 @@ def find_successor(successors, pc):
     return None
 
 def main(args):
-    graph = graphviz.Digraph('module_graph')
+    graph = graphviz.Digraph(args.output)
 
     module = None
 
-    with open(args.file, "r") as ll_file:
-        module = llvm.parse_assembly(ll_file.read())
+    with open(args.file, "br") as ll_file:
+        module = llvm.parse_bitcode(ll_file.read())
         module.verify()
 
     if module != None:
@@ -47,7 +48,7 @@ def main(args):
             if func.name[:5] != "Func_":
                 continue
             if args.isolated:
-                graph.node(func.name)
+                graph.node(func.name, fillcolor="#00ff004f", style="filled")
             
             for i, bb in enumerate(func.blocks):
 
@@ -57,6 +58,7 @@ def main(args):
                     continue
 
                 for pc in stored_pcs[:-1]:
+                    graph.node(f"{func.name}", fillcolor="#00ff004f", style="filled")
                     graph.edge(f"{func.name}", f"Func_{pc:X}")
 
                 graph.edge(f"{func.name}", f"Func_{stored_pcs[-1]:X}", color="red")
@@ -89,9 +91,15 @@ def main(args):
             #         # print("="*20)
             #         # print(func.name, ":")
             #         # print(concat_insts)
+    if args.check_duplicate:
+        links = find_duplicated_links(graph.source)
+        if links:
+            print("WARNING: duplicated links")
+        for a, b in links:
+            print(f"\t{a} -> {b}")
 
-
-    graph.render(directory=args.output_dir)
+    if not args.no_visual:
+        graph.render(directory=args.output_dir)
 
 if __name__ == "__main__":
 
@@ -99,6 +107,9 @@ if __name__ == "__main__":
     parser.add_argument("file")
     parser.add_argument("-i", "--isolated", help="Add isolated nodes", action="store_true")
     parser.add_argument('-d', '--output_dir', help="output directory", default='.')
+    parser.add_argument('-o', '--output', help="output name", default='module_graph')
+    parser.add_argument("--check-duplicate", action="store_true")
+    parser.add_argument("-n", "--no-visual", help="do not output graph", action="store_true")
 
     args = parser.parse_args()
 
