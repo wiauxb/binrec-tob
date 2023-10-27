@@ -2,6 +2,7 @@
 #include "compiler_command.hpp"
 #include "link_error.hpp"
 #include <llvm/Object/ELFObjectFile.h>
+#include <iostream>
 
 using namespace binrec;
 using namespace llvm;
@@ -163,6 +164,7 @@ make_object(const vector<SectionFile> &section_files, StringRef object_filename,
     cc.output_path = object_filename;
     cc.input_paths.push_back(assembly_filename.c_str());
 
+    cout << "Compile\n";
     return cc.run();
 }
 

@@ -89,7 +89,7 @@ _s2e-build:
 # Builds/Re-builds BinRec. Use for rebuilding after modifying merge or lift components
 build-binrec:
     mkdir -p build
-    cd build && cmake .. && make -j4
+    cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make -j4 
 
 # Cleans out a previous BinRec and s2e build, including s2e dependencies.
 clean-all: clean-binrec _clean-s2e

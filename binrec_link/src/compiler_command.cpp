@@ -1,6 +1,7 @@
 #include "compiler_command.hpp"
 #include "link_error.hpp"
 #include <cstdlib>
+#include <iostream>
 #include <llvm/Support/Program.h>
 #include <llvm/Support/raw_ostream.h>
 
@@ -71,6 +72,13 @@ auto CompilerCommand::run() -> error_code
     }
 
     vector<StringRef> args{arg_buffers.begin(), arg_buffers.end()};
+    //TODO remove print
+    std::cout << "ExecuteAndWait: "
+        << compiler_exe;
+    for (StringRef arg: args)
+        std::cout << " " << arg.str();
+    std::cout << "\n";
+
     int status = sys::ExecuteAndWait(compiler_exe, args);
     return status != 0 ? LinkError::CC_Err : error_code();
 }

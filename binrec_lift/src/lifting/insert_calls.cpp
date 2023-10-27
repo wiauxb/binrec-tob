@@ -8,6 +8,8 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <iostream>
+#include <unistd.h>
 
 #define PASS_NAME "insert_calls"
 #define PASS_ASSERT(cond) LIFT_ASSERT(PASS_NAME, cond)
@@ -38,6 +40,8 @@ auto InsertCallsPass::run(Module &m, ModuleAnalysisManager &am) -> PreservedAnal
     TraceInfo &ti = am.getResult<TraceInfoAnalysis>(m);
     FunctionInfo fi{ti};
 
+    int bp = -1;
+
     std::map<Function *, std::set<BasicBlock *>> all_ret_blocks =
         fi.get_ret_bbs_by_merged_function(m);
 
@@ -65,7 +69,20 @@ auto InsertCallsPass::run(Module &m, ModuleAnalysisManager &am) -> PreservedAnal
             // a recursive call, rather than a branch? A: Probably yes, because there should
             // not be a branch from within the function to its prologue?
             if (successors[0]->getParent() != &f || successors[0] == &f.getEntryBlock()) {
+                // std::cout << m.getName().str() 
+                //             << ", " << f.getName().str() 
+                //             << ", " << bb.getName().str() 
+                //             << "\n";
                 BasicBlock *exit_block = find_exit_block(&bb);
+                // std::cout << "Exit: " << exit_block->getName().str() << "\n";
+
+
+                ////////////////GDB Trick/////////////////
+                if (bp == -1){
+                    pid_t pid = getpid();
+                    printf("pid: %lu\n", pid);
+                    std::cin >> bp;
+                }
 
                 BasicBlock *call_follow_up_block = nullptr;
 
@@ -136,27 +153,24 @@ auto InsertCallsPass::run(Module &m, ModuleAnalysisManager &am) -> PreservedAnal
                     join_block->moveAfter(exit_block);
 
                     if (call_follow_up_block == nullptr) {
-                        PASS_ASSERT(
-                            false &&
-                            "This is not implemented yet. Also, is metadata set correctly with indirect calls?");
+                        // std::cout << m.getName().str() 
+                        //           << ", " << f.getName().str() 
+                        //           << ", " << bb.getName().str() 
+                        //           << "\n";
+                        //FIXME wiauxb: WIP not sure what we have done here ? 
+                        ReturnInst::Create(bb.getContext(),terminator->getReturnValue(),join_block);
+                        setBlockSuccs(join_block, {});
+                        join_block->getTerminator()->setMetadata("lastpc",
+                            MDNode::get(bb.getContext(),ValueAsMetadata::get(
+                                ConstantInt::get(IntegerType::getInt32Ty(bb.getContext()),last_pc))));
                     } else {
-                        ReturnInst::Create(
-                            bb.getContext(),
-                            terminator->getReturnValue(),
-                            join_block);
-                        new StoreInst(
-                            getFirstInstStart(call_follow_up_block)->getValueOperand(),
-                            m.getNamedGlobal("PC"),
-                            join_block->getTerminator());
+                        ReturnInst::Create(bb.getContext(),terminator->getReturnValue(),join_block);
+                        new StoreInst(getFirstInstStart(call_follow_up_block)->getValueOperand(),m.getNamedGlobal("PC"),join_block->getTerminator());
                         std::vector<BasicBlock *> meta_succs{call_follow_up_block};
                         setBlockSuccs(join_block, meta_succs);
-                        join_block->getTerminator()->setMetadata(
-                            "lastpc",
-                            MDNode::get(
-                                bb.getContext(),
-                                ValueAsMetadata::get(ConstantInt::get(
-                                    IntegerType::getInt32Ty(bb.getContext()),
-                                    last_pc))));
+                        join_block->getTerminator()->setMetadata("lastpc",
+                            MDNode::get(bb.getContext(),ValueAsMetadata::get(
+                                ConstantInt::get(IntegerType::getInt32Ty(bb.getContext()),last_pc))));
                     }
 
                     // Call of function pointer.
@@ -177,10 +191,11 @@ auto InsertCallsPass::run(Module &m, ModuleAnalysisManager &am) -> PreservedAnal
                         exit_block);
 
                     for (BasicBlock *successor : successors) {
-                        PASS_ASSERT(
-                            (successor->getParent() != &f || successor == &f.getEntryBlock()) &&
-                            "Successor is basic block in own function instead of "
-                            "a function for function pointer call.");
+                        //FIXME wiauxb: the Q/A above seems to be wrong, but I dont have any theoritical arguments, just counter examples
+                        // PASS_ASSERT(
+                        //     (successor->getParent() != &f || successor == &f.getEntryBlock()) &&
+                        //     "Successor is basic block in own function instead of "
+                        //     "a function for function pointer call.");
                         Function *callee = successor->getParent();
                         BasicBlock *call_block = BasicBlock::Create(
                             m.getContext(),

@@ -1,6 +1,7 @@
 #include "section_link.hpp"
 #include "compiler_command.hpp"
 #include "link_error.hpp"
+#include <iostream>
 #include <llvm/Support/Format.h>
 #include <llvm/Support/FormatVariadic.h>
 #include <llvm/Support/raw_ostream.h>
@@ -63,6 +64,7 @@ auto binrec::link_recovered_binary(
     cc.input_paths = input_paths;
     cc.harden = ctx.harden;
 
+    cout << "Link\n";
     ec = cc.run();
     if (ec) {
         return errorCodeToError(ec);
