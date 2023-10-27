@@ -102,7 +102,7 @@ auto PruneTriviallyDeadSuccsPass::run(Module &m, ModuleAnalysisManager &am) -> P
 
                 BasicBlock *only_succ = find_successor(succs, last_stored_pc);
 
-                //FIXME ERROR "does not have ... in its succesor list"
+                //FIXME wiauxb: ERROR "does not have ... in its succesor list"
                 if (succs.size() == 1)
                     continue;
 

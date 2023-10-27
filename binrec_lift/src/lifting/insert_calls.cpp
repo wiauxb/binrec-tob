@@ -40,8 +40,6 @@ auto InsertCallsPass::run(Module &m, ModuleAnalysisManager &am) -> PreservedAnal
     TraceInfo &ti = am.getResult<TraceInfoAnalysis>(m);
     FunctionInfo fi{ti};
 
-    int bp = -1;
-
     std::map<Function *, std::set<BasicBlock *>> all_ret_blocks =
         fi.get_ret_bbs_by_merged_function(m);
 
@@ -69,20 +67,13 @@ auto InsertCallsPass::run(Module &m, ModuleAnalysisManager &am) -> PreservedAnal
             // a recursive call, rather than a branch? A: Probably yes, because there should
             // not be a branch from within the function to its prologue?
             if (successors[0]->getParent() != &f || successors[0] == &f.getEntryBlock()) {
-                // std::cout << m.getName().str() 
-                //             << ", " << f.getName().str() 
-                //             << ", " << bb.getName().str() 
+                // std::cout << m.getName().str()
+                //             << ", " << f.getName().str()
+                //             << ", " << bb.getName().str()
                 //             << "\n";
                 BasicBlock *exit_block = find_exit_block(&bb);
                 // std::cout << "Exit: " << exit_block->getName().str() << "\n";
 
-
-                ////////////////GDB Trick/////////////////
-                if (bp == -1){
-                    pid_t pid = getpid();
-                    printf("pid: %lu\n", pid);
-                    std::cin >> bp;
-                }
 
                 BasicBlock *call_follow_up_block = nullptr;
 
@@ -153,11 +144,11 @@ auto InsertCallsPass::run(Module &m, ModuleAnalysisManager &am) -> PreservedAnal
                     join_block->moveAfter(exit_block);
 
                     if (call_follow_up_block == nullptr) {
-                        // std::cout << m.getName().str() 
-                        //           << ", " << f.getName().str() 
-                        //           << ", " << bb.getName().str() 
+                        // std::cout << m.getName().str()
+                        //           << ", " << f.getName().str()
+                        //           << ", " << bb.getName().str()
                         //           << "\n";
-                        //FIXME wiauxb: WIP not sure what we have done here ? 
+                        //FIXME wiauxb: WIP not sure what we have done here ?
                         ReturnInst::Create(bb.getContext(),terminator->getReturnValue(),join_block);
                         setBlockSuccs(join_block, {});
                         join_block->getTerminator()->setMetadata("lastpc",
