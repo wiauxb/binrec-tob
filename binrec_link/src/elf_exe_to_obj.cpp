@@ -139,7 +139,7 @@ make_object(const vector<SectionFile> &section_files, StringRef object_filename,
     for (const SectionFile &file : section_files) {
         const SectionInfo &section = file.section;
 
-        const char *progbits = section.nobits ? "" : ",@progbits";
+        const char *progbits = section.nobits ? ",@nobits" : ",@progbits";
 
         auto normalized_section_name = section.name;
         replace(normalized_section_name.begin(), normalized_section_name.end(), '.', '_');

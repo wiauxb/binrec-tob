@@ -72,7 +72,7 @@ auto CompilerCommand::run() -> error_code
     }
 
     vector<StringRef> args{arg_buffers.begin(), arg_buffers.end()};
-    //TODO remove print
+    //TODO wiauxb: remove print
     // std::cout << "ExecuteAndWait: "
     //     << compiler_exe;
     // for (StringRef arg: args)
