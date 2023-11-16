@@ -74,34 +74,47 @@ static void print_user_desc(struct user_desc* ud){
     printf("useable %d\n", ud->useable);
 }
 
+static void init_new_tls(struct user_desc * ud){
+    ud->entry_number = -1;
+    int ret = syscall(SYS_set_thread_area, ud);
+    printf("retcode: %d\n", ret);
+    print_user_desc(ud);
+
+}
+
 static void init_gs(SegmentCache *ds)
 {
-    ds->selector = get_gs();
-    SYSCALL1(SYS_get_thread_area, (struct user_desc*)ds);
-    struct user_desc info = {.entry_number = get_gs()};
-    printf("entry_number: %d\n", info.entry_number);
-    SYSCALL1(SYS_get_thread_area, &info);
-    ssize_t ret = SYSCALL_RET;  // FIXME: THIS KEEPS FAILING!!!???
+    struct user_desc info; 
+    init_new_tls(&info);
+    int ret = syscall(SYS_get_thread_area, &info);
+    printf("retcode: %d\n", ret);
     print_user_desc(&info);
-    printf("----------------------------\n");
-    print_user_desc((struct user_desc*)ds);
+    // ds->selector = get_gs();
+    // SYSCALL1(SYS_get_thread_area, (struct user_desc*)ds);
+    // struct user_desc info = {.entry_number = get_gs()};
+    // printf("entry_number: %d\n", info.entry_number);
+    // SYSCALL1(SYS_get_thread_area, &info);
+    // ssize_t ret = SYSCALL_RET;  // FIXME: THIS KEEPS FAILING!!!???
+    // print_user_desc(&info);
+    // printf("----------------------------\n");
+    // print_user_desc((struct user_desc*)ds);
 
-    if (ret) {
-    //    binrecrt_fdprintf(STDERR_FILENO, "get_thread_area returned ");
-    //    binrecrt_write_dec(DEBUG_FD, ret);
-    //    binrecrt_write_char(DEBUG_FD, '\n');
-    //    binrecrt_exit(-2);
-        printf("get_thread_area returned %d\n", ret);
-        printf("errno: %d = %s\n", errno, strerror(errno));
-        // exit(-2);
-    }
+    // if (ret) {
+    // //    binrecrt_fdprintf(STDERR_FILENO, "get_thread_area returned ");
+    // //    binrecrt_write_dec(DEBUG_FD, ret);
+    // //    binrecrt_write_char(DEBUG_FD, '\n');
+    // //    binrecrt_exit(-2);
+    //     printf("get_thread_area returned %d\n", ret);
+    //     printf("errno: %d = %s\n", errno, strerror(errno));
+    //     // exit(-2);
+    // }
 
-    ds->base = info.base_addr;
+    // ds->base = info.base_addr;
 
     // for now just emulate the TLS by setting the base pointer to a global
     // array so that accesses do not segfault (note that the stack canary will
     // always be zero)
-    // ds->base = (target_ulong)segmem;
+    ds->base = (target_ulong)segmem;
 }
 
 static void init_env()
