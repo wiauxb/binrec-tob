@@ -10,6 +10,9 @@ extern "C" {
 #include <sys/syscall.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include "mysyscall.h"
+#include <errno.h>
+#include <string.h>
 
 typedef target_ulong addr_t;
 typedef addr_t stackword_t;
@@ -59,27 +62,46 @@ static uint16_t get_gs()
     return gs;
 }
 
+static void print_user_desc(struct user_desc* ud){
+    printf("entry_number %d\n", ud->entry_number);
+    printf("base_addr %d\n", ud->base_addr);
+    printf("limit %d\n", ud->limit);
+    printf("seg_32bit %d\n", ud->seg_32bit);
+    printf("contents %d\n", ud->contents);
+    printf("read_exec_only %d\n", ud->read_exec_only);
+    printf("limit_in_pages %d\n", ud->limit_in_pages);
+    printf("seg_not_present %d\n", ud->seg_not_present);
+    printf("useable %d\n", ud->useable);
+}
+
 static void init_gs(SegmentCache *ds)
 {
-    // ds->selector = get_gs();
-    // SYSCALL1(SYS_get_thread_area, (struct user_desc*)ds);
-    // struct user_desc info = {.entry_number = get_gs()};
-    // SYSCALL1(SYS_get_thread_area, &info);
+    ds->selector = get_gs();
+    SYSCALL1(SYS_get_thread_area, (struct user_desc*)ds);
+    struct user_desc info = {.entry_number = get_gs()};
+    printf("entry_number: %d\n", info.entry_number);
+    SYSCALL1(SYS_get_thread_area, &info);
+    ssize_t ret = SYSCALL_RET;  // FIXME: THIS KEEPS FAILING!!!???
+    print_user_desc(&info);
+    printf("----------------------------\n");
+    print_user_desc((struct user_desc*)ds);
 
-    // ssize_t ret = SYSCALL_RET;  // FIXME: THIS KEEPS FAILING!!!???
-    // if (ret) {
+    if (ret) {
     //    binrecrt_fdprintf(STDERR_FILENO, "get_thread_area returned ");
     //    binrecrt_write_dec(DEBUG_FD, ret);
     //    binrecrt_write_char(DEBUG_FD, '\n');
     //    binrecrt_exit(-2);
-    //}
+        printf("get_thread_area returned %d\n", ret);
+        printf("errno: %d = %s\n", errno, strerror(errno));
+        // exit(-2);
+    }
 
-    // ds->base = info.base_addr;
+    ds->base = info.base_addr;
 
     // for now just emulate the TLS by setting the base pointer to a global
     // array so that accesses do not segfault (note that the stack canary will
     // always be zero)
-    ds->base = (target_ulong)segmem;
+    // ds->base = (target_ulong)segmem;
 }
 
 static void init_env()

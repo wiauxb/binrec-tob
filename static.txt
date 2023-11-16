@@ -1,0 +1,408 @@
+Dump of assembler code for function Func__IO_file_doallocate:
+   0x090492c0 <+0>:	push   edi
+   0x090492c1 <+1>:	push   esi
+   0x090492c2 <+2>:	sub    esp,0x54
+   0x090492c5 <+5>:	mov    DWORD PTR [esp+0xc],0x808e914
+   0x090492cd <+13>:	mov    eax,DWORD PTR [esp+0x60]
+   0x090492d1 <+17>:	lea    ecx,[eax-0x4]
+   0x090492d4 <+20>:	mov    edx,DWORD PTR [esp+0x64]
+   0x090492d8 <+24>:	mov    DWORD PTR [eax-0x4],edx
+   0x090492db <+27>:	mov    DWORD PTR [esp+0x60],ecx
+   0x090492df <+31>:	mov    DWORD PTR [esp+0xc],0x808e915
+   0x090492e7 <+39>:	lea    ecx,[eax-0x8]
+   0x090492ea <+42>:	mov    edx,DWORD PTR [esp+0x6c]
+   0x090492ee <+46>:	mov    DWORD PTR [eax-0x8],edx
+   0x090492f1 <+49>:	mov    DWORD PTR [esp+0x60],ecx
+   0x090492f5 <+53>:	mov    DWORD PTR [esp+0xc],0x808e916
+   0x090492fd <+61>:	mov    DWORD PTR ds:0x9054054,0x808e91b
+   0x09049307 <+71>:	mov    DWORD PTR [eax-0xc],0x808e91b
+   0x0904930e <+78>:	add    eax,0xfffffff4
+   0x09049311 <+81>:	mov    DWORD PTR [esp+0x60],eax
+   0x09049315 <+85>:	sub    esp,0xc
+   0x09049318 <+88>:	push   eax
+   0x09049319 <+89>:	call   0x904c530 <Func___x86.get_pc_thunk.di>
+   0x0904931e <+94>:	add    esp,0x10
+   0x09049321 <+97>:	mov    DWORD PTR [esp+0x60],eax
+   0x09049325 <+101>:	add    edx,0x566e5
+   0x0904932b <+107>:	mov    DWORD PTR [esp+0x6c],edx
+   0x0904932f <+111>:	mov    DWORD PTR [esp+0x1c],0x566e5
+   0x09049337 <+119>:	mov    DWORD PTR [esp+0x14],edx
+   0x0904933b <+123>:	mov    DWORD PTR [esp+0xc],0x808e921
+   0x09049343 <+131>:	mov    DWORD PTR [esp+0x10],0x8
+   0x0904934b <+139>:	lea    ecx,[eax-0x4]
+   0x0904934e <+142>:	mov    edx,DWORD PTR [esp+0x70]
+   0x09049352 <+146>:	mov    DWORD PTR [eax-0x4],edx
+   0x09049355 <+149>:	mov    DWORD PTR [esp+0x60],ecx
+   0x09049359 <+153>:	mov    DWORD PTR [esp+0xc],0x808e922
+   0x09049361 <+161>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049369 <+169>:	mov    ecx,DWORD PTR [esp+0x68]
+   0x0904936d <+173>:	mov    DWORD PTR [eax-0x8],ecx
+   0x09049370 <+176>:	lea    ecx,[eax-0x84]
+   0x09049376 <+182>:	mov    DWORD PTR [esp+0x60],ecx
+   0x0904937a <+186>:	mov    DWORD PTR [esp+0x1c],0x7c
+   0x09049382 <+194>:	mov    DWORD PTR [esp+0x14],ecx
+   0x09049386 <+198>:	mov    DWORD PTR [esp+0xc],0x808e926
+   0x0904938e <+206>:	mov    DWORD PTR [esp+0x10],0x10
+   0x09049396 <+214>:	mov    ecx,DWORD PTR ds:0xa0540d4
+   0x0904939c <+220>:	mov    ecx,DWORD PTR [ecx+0x14]
+   0x0904939f <+223>:	mov    DWORD PTR [esp+0x18],ecx
+   0x090493a3 <+227>:	mov    DWORD PTR [esp+0xc],0x808e92c
+   0x090493ab <+235>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090493b3 <+243>:	mov    DWORD PTR [eax-0x18],ecx
+   0x090493b6 <+246>:	mov    DWORD PTR [esp+0x18],0x0
+   0x090493be <+254>:	mov    DWORD PTR [esp+0x14],0x0
+   0x090493c6 <+262>:	mov    DWORD PTR [esp+0xc],0x808e932
+   0x090493ce <+270>:	mov    DWORD PTR [esp+0x10],0x18
+   0x090493d6 <+278>:	mov    eax,DWORD PTR [eax+0xc]
+   0x090493d9 <+281>:	mov    DWORD PTR [esp+0x70],eax
+   0x090493dd <+285>:	mov    DWORD PTR [esp+0xc],0x808e939
+   0x090493e5 <+293>:	mov    DWORD PTR [esp+0x10],0x18
+   0x090493ed <+301>:	mov    eax,DWORD PTR [eax+0x38]
+   0x090493f0 <+304>:	mov    DWORD PTR [esp+0x68],eax
+   0x090493f4 <+308>:	mov    DWORD PTR [esp+0x10],0x18
+   0x090493fc <+316>:	mov    DWORD PTR [esp+0x14],eax
+   0x09049400 <+320>:	mov    DWORD PTR [esp+0xc],0x808e93e
+   0x09049408 <+328>:	test   eax,eax
+   0x0904940a <+330>:	js     0x9049416 <Func__IO_file_doallocate+342>
+   0x0904940c <+332>:	mov    DWORD PTR [esp+0xc],0x808e944
+   0x09049414 <+340>:	jmp    0x904941e <Func__IO_file_doallocate+350>
+   0x09049416 <+342>:	mov    DWORD PTR [esp+0xc],0x808e9e0
+   0x0904941e <+350>:	mov    DWORD PTR [esp+0xc],0x808e944
+   0x09049426 <+358>:	mov    eax,DWORD PTR [esp+0x70]
+   0x0904942a <+362>:	mov    eax,DWORD PTR [eax+0x94]
+   0x09049430 <+368>:	mov    DWORD PTR [esp+0x68],eax
+   0x09049434 <+372>:	mov    DWORD PTR [esp+0x24],0x80e5f60
+   0x0904943c <+380>:	mov    DWORD PTR [esp+0x18],0x354
+   0x09049444 <+388>:	mov    DWORD PTR [esp+0x10],0x10
+   0x0904944c <+396>:	lea    ecx,[eax-0x80e5f60]
+   0x09049452 <+402>:	mov    DWORD PTR [esp+0x20],ecx
+   0x09049456 <+406>:	mov    DWORD PTR [esp+0x1c],ecx
+   0x0904945a <+410>:	mov    edx,0x80e62b4
+   0x0904945f <+415>:	sub    edx,eax
+   0x09049461 <+417>:	mov    DWORD PTR [esp+0x14],edx
+   0x09049465 <+421>:	mov    DWORD PTR [esp+0xc],0x808e95e
+   0x0904946d <+429>:	cmp    ecx,0x353
+   0x09049473 <+435>:	jbe    0x904947f <Func__IO_file_doallocate+447>
+   0x09049475 <+437>:	mov    DWORD PTR [esp+0xc],0x808ea80
+   0x0904947d <+445>:	jmp    0x9049487 <Func__IO_file_doallocate+455>
+   0x0904947f <+447>:	mov    DWORD PTR [esp+0xc],0x808e964
+   0x09049487 <+455>:	mov    eax,DWORD PTR [esp+0x60]
+   0x0904948b <+459>:	lea    ecx,[eax-0x8]
+   0x0904948e <+462>:	mov    DWORD PTR [esp+0x60],ecx
+   0x09049492 <+466>:	mov    DWORD PTR [esp+0x1c],0x8
+   0x0904949a <+474>:	mov    DWORD PTR [esp+0x14],ecx
+   0x0904949e <+478>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090494a6 <+486>:	lea    ecx,[eax+0xc]
+   0x090494a9 <+489>:	mov    DWORD PTR [esp+0x18],ecx
+   0x090494ad <+493>:	mov    DWORD PTR [esp+0xc],0x808e96b
+   0x090494b5 <+501>:	lea    edx,[eax-0xc]
+   0x090494b8 <+504>:	mov    DWORD PTR [eax-0xc],ecx
+   0x090494bb <+507>:	mov    DWORD PTR [esp+0x60],edx
+   0x090494bf <+511>:	mov    DWORD PTR [esp+0xc],0x808e96c
+   0x090494c7 <+519>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090494cf <+527>:	lea    ecx,[eax-0x10]
+   0x090494d2 <+530>:	mov    edx,DWORD PTR [esp+0x70]
+   0x090494d6 <+534>:	mov    DWORD PTR [eax-0x10],edx
+   0x090494d9 <+537>:	mov    DWORD PTR [esp+0x60],ecx
+   0x090494dd <+541>:	mov    DWORD PTR [esp+0xc],0x808e96d
+   0x090494e5 <+549>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090494ed <+557>:	mov    ecx,DWORD PTR [esp+0x68]
+   0x090494f1 <+561>:	mov    ecx,DWORD PTR [ecx+0x48]
+   0x090494f4 <+564>:	mov    DWORD PTR ds:0x9054054,0x808e970
+   0x090494fe <+574>:	mov    DWORD PTR [eax-0x14],0x808e970
+   0x09049505 <+581>:	add    eax,0xffffffec
+   0x09049508 <+584>:	mov    DWORD PTR [esp+0x60],eax
+   0x0904950c <+588>:	mov    DWORD PTR [esp+0xc],ecx
+   0x09049510 <+592>:	sub    esp,0x8
+   0x09049513 <+595>:	push   DWORD PTR [esp+0x70]
+   0x09049517 <+599>:	push   eax
+   0x09049518 <+600>:	call   0x904ec30 <Func__IO_file_stat>
+   0x0904951d <+605>:	add    esp,0x10
+   0x09049520 <+608>:	mov    DWORD PTR [esp+0x18],edx
+   0x09049524 <+612>:	add    eax,0x10
+   0x09049527 <+615>:	mov    DWORD PTR [esp+0x60],eax
+   0x0904952b <+619>:	mov    DWORD PTR [esp+0x14],edx
+   0x0904952f <+623>:	mov    DWORD PTR [esp+0xc],0x808e975
+   0x09049537 <+631>:	mov    DWORD PTR [esp+0x10],0x18
+   0x0904953f <+639>:	test   edx,edx
+   0x09049541 <+641>:	js     0x904954d <Func__IO_file_doallocate+653>
+   0x09049543 <+643>:	mov    DWORD PTR [esp+0xc],0x808e977
+   0x0904954b <+651>:	jmp    0x9049555 <Func__IO_file_doallocate+661>
+   0x0904954d <+653>:	mov    DWORD PTR [esp+0xc],0x808e9e0
+   0x09049555 <+661>:	mov    DWORD PTR [esp+0xc],0x808e977
+   0x0904955d <+669>:	mov    eax,DWORD PTR [esp+0x60]
+   0x09049561 <+673>:	mov    ecx,0xf000
+   0x09049566 <+678>:	and    ecx,DWORD PTR [eax+0x1c]
+   0x09049569 <+681>:	mov    DWORD PTR [esp+0x18],ecx
+   0x0904956d <+685>:	mov    DWORD PTR [esp+0x1c],0x2000
+   0x09049575 <+693>:	add    ecx,0xffffe000
+   0x0904957b <+699>:	mov    DWORD PTR [esp+0x14],ecx
+   0x0904957f <+703>:	mov    DWORD PTR [esp+0xc],0x808e985
+   0x09049587 <+711>:	mov    DWORD PTR [esp+0x10],0x10
+   0x0904958f <+719>:	je     0x904959b <Func__IO_file_doallocate+731>
+   0x09049591 <+721>:	mov    DWORD PTR [esp+0xc],0x808e987
+   0x09049599 <+729>:	jmp    0x90495a3 <Func__IO_file_doallocate+739>
+   0x0904959b <+731>:	mov    DWORD PTR [esp+0xc],0x808e9f0
+   0x090495a3 <+739>:	mov    DWORD PTR [esp+0xc],0x808e9f0
+   0x090495ab <+747>:	mov    eax,DWORD PTR [esp+0x60]
+   0x090495af <+751>:	mov    edx,DWORD PTR [eax+0x2c]
+   0x090495b2 <+754>:	mov    DWORD PTR [esp+0x20],edx
+   0x090495b6 <+758>:	mov    DWORD PTR [esp+0xc],0x808e9f4
+   0x090495be <+766>:	mov    eax,DWORD PTR [eax+0x30]
+   0x090495c1 <+769>:	mov    DWORD PTR [esp+0x68],eax
+   0x090495c5 <+773>:	mov    ecx,eax
+   0x090495c7 <+775>:	shld   ecx,edx,0x18
+   0x090495cb <+779>:	shr    edx,0x7
+   0x090495ce <+782>:	mov    DWORD PTR [esp+0x50],ecx
+   0x090495d2 <+786>:	mov    DWORD PTR [esp+0x4c],edx
+   0x090495d6 <+790>:	and    ecx,0xfff
+   0x090495dc <+796>:	mov    DWORD PTR [esp+0x24],ecx
+   0x090495e0 <+800>:	and    eax,0xfffff000
+   0x090495e5 <+805>:	lea    edx,[eax+ecx*1]
+   0x090495e8 <+808>:	lea    esi,[eax+ecx*1-0x88]
+   0x090495ef <+815>:	mov    DWORD PTR [esp+0x18],esi
+   0x090495f3 <+819>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090495fb <+827>:	mov    DWORD PTR [esp+0x1c],0x7
+   0x09049603 <+835>:	lea    eax,[eax+ecx*1-0x8f]
+   0x0904960a <+842>:	mov    DWORD PTR [esp+0x14],eax
+   0x0904960e <+846>:	mov    DWORD PTR [esp+0xc],0x808ea17
+   0x09049616 <+854>:	and    edx,0xfffffff8
+   0x09049619 <+857>:	cmp    edx,0x88
+   0x0904961f <+863>:	jne    0x904962b <Func__IO_file_doallocate+875>
+   0x09049621 <+865>:	mov    DWORD PTR [esp+0xc],0x808ea19
+   0x09049629 <+873>:	jmp    0x9049633 <Func__IO_file_doallocate+883>
+   0x0904962b <+875>:	mov    DWORD PTR [esp+0xc],0x808ea48
+   0x09049633 <+883>:	mov    DWORD PTR [esp+0x68],0xffffffe0
+   0x0904963b <+891>:	mov    DWORD PTR [esp+0xc],0x808ea4e
+   0x09049643 <+899>:	mov    eax,ds:0xa0540d4
+   0x09049648 <+904>:	mov    ecx,DWORD PTR [eax]
+   0x0904964a <+906>:	mov    DWORD PTR [esp+0x18],ecx
+   0x0904964e <+910>:	mov    eax,DWORD PTR [esp+0x60]
+   0x09049652 <+914>:	lea    edx,[eax-0xc]
+   0x09049655 <+917>:	mov    DWORD PTR [esp+0x60],edx
+   0x09049659 <+921>:	mov    DWORD PTR [esp+0x1c],0xc
+   0x09049661 <+929>:	mov    DWORD PTR [esp+0x14],edx
+   0x09049665 <+933>:	mov    DWORD PTR [esp+0xc],0x808ea57
+   0x0904966d <+941>:	mov    DWORD PTR [esp+0x10],0x10
+   0x09049675 <+949>:	mov    ecx,DWORD PTR [ecx-0x20]
+   0x09049678 <+952>:	mov    DWORD PTR [esp+0x64],ecx
+   0x0904967c <+956>:	mov    DWORD PTR [esp+0xc],0x808ea5a
+   0x09049684 <+964>:	mov    DWORD PTR [esp+0x10],0x10
+   0x0904968c <+972>:	mov    ecx,DWORD PTR [esp+0x70]
+   0x09049690 <+976>:	mov    ecx,DWORD PTR [ecx+0x38]
+   0x09049693 <+979>:	lea    edx,[eax-0x10]
+   0x09049696 <+982>:	mov    DWORD PTR [eax-0x10],ecx
+   0x09049699 <+985>:	mov    DWORD PTR [esp+0x60],edx
+   0x0904969d <+989>:	mov    DWORD PTR [esp+0xc],0x808ea5d
+   0x090496a5 <+997>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090496ad <+1005>:	mov    DWORD PTR ds:0x9054054,0x808ea62
+   0x090496b7 <+1015>:	mov    DWORD PTR [eax-0x14],0x808ea62
+   0x090496be <+1022>:	add    eax,0xffffffec
+   0x090496c1 <+1025>:	mov    DWORD PTR [esp+0x60],eax
+   0x090496c5 <+1029>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090496cd <+1037>:	lea    ecx,[esp+0x28]
+   0x090496d1 <+1041>:	push   DWORD PTR [esp+0x70]
+   0x090496d5 <+1045>:	push   DWORD PTR [esp+0x6c]
+   0x090496d9 <+1049>:	push   eax
+   0x090496da <+1050>:	push   ecx
+   0x090496db <+1051>:	call   0x904f430 <Func___isatty>
+   0x090496e0 <+1056>:	add    esp,0xc
+   0x090496e3 <+1059>:	mov    ecx,DWORD PTR [esp+0x34]
+   0x090496e7 <+1063>:	mov    eax,DWORD PTR [esp+0x30]
+   0x090496eb <+1067>:	mov    edx,DWORD PTR [esp+0x28]
+   0x090496ef <+1071>:	mov    esi,DWORD PTR [esp+0x2c]
+   0x090496f3 <+1075>:	mov    DWORD PTR [esp+0x60],edx
+   0x090496f7 <+1079>:	mov    DWORD PTR [esp+0x18],esi
+   0x090496fb <+1083>:	mov    DWORD PTR [esp+0x68],eax
+   0x090496ff <+1087>:	mov    DWORD PTR [esp+0x70],ecx
+   0x09049703 <+1091>:	mov    DWORD PTR [esp+0xc],0x808ea62
+   0x0904970b <+1099>:	mov    ecx,DWORD PTR ds:0xa0540d4
+   0x09049711 <+1105>:	mov    ecx,DWORD PTR [ecx]
+   0x09049713 <+1107>:	mov    DWORD PTR [esp+0x20],ecx
+   0x09049717 <+1111>:	add    edx,0x10
+   0x0904971a <+1114>:	mov    DWORD PTR [esp+0x60],edx
+   0x0904971e <+1118>:	mov    DWORD PTR [esp+0x1c],0x10
+   0x09049726 <+1126>:	mov    DWORD PTR [esp+0x14],edx
+   0x0904972a <+1130>:	mov    DWORD PTR [esp+0xc],0x808ea6c
+   0x09049732 <+1138>:	mov    DWORD PTR [esp+0x10],0x8
+   0x0904973a <+1146>:	mov    edx,DWORD PTR [esp+0x64]
+   0x0904973e <+1150>:	mov    DWORD PTR [ecx+eax*1],edx
+   0x09049741 <+1153>:	mov    eax,DWORD PTR [esp+0x18]
+   0x09049745 <+1157>:	mov    DWORD PTR [esp+0x14],eax
+   0x09049749 <+1161>:	mov    DWORD PTR [esp+0xc],0x808ea71
+   0x09049751 <+1169>:	mov    DWORD PTR [esp+0x10],0x18
+   0x09049759 <+1177>:	test   eax,eax
+   0x0904975b <+1179>:	je     0x9049767 <Func__IO_file_doallocate+1191>
+   0x0904975d <+1181>:	mov    DWORD PTR [esp+0xc],0x808ea19
+   0x09049765 <+1189>:	jmp    0x904976f <Func__IO_file_doallocate+1199>
+   0x09049767 <+1191>:	mov    DWORD PTR [esp+0xc],0x808ea73
+   0x0904976f <+1199>:	mov    DWORD PTR [esp+0xc],0x808e987
+   0x09049777 <+1207>:	mov    eax,DWORD PTR [esp+0x60]
+   0x0904977b <+1211>:	mov    eax,DWORD PTR [eax+0x40]
+   0x0904977e <+1214>:	mov    DWORD PTR [esp+0x64],eax
+   0x09049782 <+1218>:	lea    ecx,[eax-0x1]
+   0x09049785 <+1221>:	mov    DWORD PTR [esp+0x18],ecx
+   0x09049789 <+1225>:	mov    DWORD PTR [esp+0x1c],0x1ffe
+   0x09049791 <+1233>:	lea    ecx,[eax-0x1fff]
+   0x09049797 <+1239>:	mov    DWORD PTR [esp+0x14],ecx
+   0x0904979b <+1243>:	mov    DWORD PTR [esp+0xc],0x808e993
+   0x090497a3 <+1251>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090497ab <+1259>:	add    eax,0xffffe000
+   0x090497b0 <+1264>:	cmp    eax,0xffffe001
+   0x090497b5 <+1269>:	jae    0x90497c1 <Func__IO_file_doallocate+1281>
+   0x090497b7 <+1271>:	mov    DWORD PTR [esp+0xc],0x808e9e0
+   0x090497bf <+1279>:	jmp    0x90497c9 <Func__IO_file_doallocate+1289>
+   0x090497c1 <+1281>:	mov    DWORD PTR [esp+0xc],0x808e995
+   0x090497c9 <+1289>:	mov    eax,DWORD PTR [esp+0x60]
+   0x090497cd <+1293>:	lea    ecx,[eax-0xc]
+   0x090497d0 <+1296>:	mov    DWORD PTR [esp+0x60],ecx
+   0x090497d4 <+1300>:	mov    DWORD PTR [esp+0x1c],0xc
+   0x090497dc <+1308>:	mov    DWORD PTR [esp+0x14],ecx
+   0x090497e0 <+1312>:	mov    DWORD PTR [esp+0x10],0x10
+   0x090497e8 <+1320>:	mov    ecx,DWORD PTR [esp+0x6c]
+   0x090497ec <+1324>:	mov    DWORD PTR [esp+0x68],ecx
+   0x090497f0 <+1328>:	mov    DWORD PTR [esp+0xc],0x808e99d
+   0x090497f8 <+1336>:	lea    ecx,[eax-0x10]
+   0x090497fb <+1339>:	mov    edx,DWORD PTR [esp+0x64]
+   0x090497ff <+1343>:	mov    DWORD PTR [eax-0x10],edx
+   0x09049802 <+1346>:	mov    DWORD PTR [esp+0x60],ecx
+   0x09049806 <+1350>:	mov    DWORD PTR [esp+0xc],0x808e99e
+   0x0904980e <+1358>:	mov    DWORD PTR [esp+0x10],0x10
+   0x09049816 <+1366>:	mov    DWORD PTR ds:0x9054054,0x808e9a3
+   0x09049820 <+1376>:	mov    DWORD PTR [eax-0x14],0x808e9a3
+   0x09049827 <+1383>:	add    eax,0xffffffec
+   0x0904982a <+1386>:	mov    DWORD PTR [esp+0x60],eax
+   0x0904982e <+1390>:	mov    DWORD PTR [esp+0x10],0x10
+   0x09049836 <+1398>:	sub    esp,0x8
+   0x09049839 <+1401>:	lea    ecx,[esp+0x40]
+   0x0904983d <+1405>:	push   DWORD PTR [esp+0x78]
+   0x09049841 <+1409>:	push   DWORD PTR [esp+0x78]
+   0x09049845 <+1413>:	push   DWORD PTR [esp+0x78]
+   0x09049849 <+1417>:	push   DWORD PTR [esp+0x78]
+   0x0904984d <+1421>:	push   eax
+   0x0904984e <+1422>:	push   ecx
+   0x0904984f <+1423>:	call   0x904c190 <Func___libc_malloc>
+   0x09049854 <+1428>:	add    esp,0x1c
+   0x09049857 <+1431>:	mov    eax,DWORD PTR [esp+0x48]
+   0x0904985b <+1435>:	mov    ecx,DWORD PTR [esp+0x44]
+   0x0904985f <+1439>:	mov    edx,DWORD PTR [esp+0x40]
+   0x09049863 <+1443>:	mov    esi,DWORD PTR [esp+0x38]
+   0x09049867 <+1447>:	mov    edi,DWORD PTR [esp+0x3c]
+   0x0904986b <+1451>:	mov    DWORD PTR [esp+0x18],edi
+   0x0904986f <+1455>:	mov    DWORD PTR [esp+0x64],edx
+   0x09049873 <+1459>:	mov    DWORD PTR [esp+0x68],ecx
+   0x09049877 <+1463>:	mov    DWORD PTR [esp+0x70],eax
+   0x0904987b <+1467>:	add    esi,0x10
+   0x0904987e <+1470>:	mov    DWORD PTR [esp+0x60],esi
+   0x09049882 <+1474>:	mov    DWORD PTR [esp+0x14],edi
+   0x09049886 <+1478>:	mov    DWORD PTR [esp+0xc],0x808e9a8
+   0x0904988e <+1486>:	mov    DWORD PTR [esp+0x10],0x18
+   0x09049896 <+1494>:	test   edi,edi
+   0x09049898 <+1496>:	je     0x90498a4 <Func__IO_file_doallocate+1508>
+   0x0904989a <+1498>:	mov    DWORD PTR [esp+0xc],0x808e9ae
+   0x090498a2 <+1506>:	jmp    0x90498ac <Func__IO_file_doallocate+1516>
+   0x090498a4 <+1508>:	mov    DWORD PTR [esp+0xc],0x808ea38
+   0x090498ac <+1516>:	mov    ecx,DWORD PTR [esp+0x18]
+   0x090498b0 <+1520>:	mov    edx,DWORD PTR [esp+0x64]
+   0x090498b4 <+1524>:	add    edx,ecx
+   0x090498b6 <+1526>:	mov    DWORD PTR [esp+0x64],edx
+   0x090498ba <+1530>:	mov    DWORD PTR [esp+0x1c],ecx
+   0x090498be <+1534>:	mov    DWORD PTR [esp+0x14],edx
+   0x090498c2 <+1538>:	mov    DWORD PTR [esp+0xc],0x808e9b0
+   0x090498ca <+1546>:	mov    DWORD PTR [esp+0x10],0x8
+   0x090498d2 <+1554>:	mov    eax,DWORD PTR [esp+0x60]
+   0x090498d6 <+1558>:	lea    esi,[eax-0x4]
+   0x090498d9 <+1561>:	mov    DWORD PTR [eax-0x4],0x1
+   0x090498e0 <+1568>:	mov    DWORD PTR [esp+0x60],esi
+   0x090498e4 <+1572>:	mov    DWORD PTR [esp+0xc],0x808e9b2
+   0x090498ec <+1580>:	mov    DWORD PTR [esp+0x10],0x8
+   0x090498f4 <+1588>:	lea    esi,[eax-0x8]
+   0x090498f7 <+1591>:	mov    DWORD PTR [eax-0x8],edx
+   0x090498fa <+1594>:	mov    DWORD PTR [esp+0x60],esi
+   0x090498fe <+1598>:	mov    DWORD PTR [esp+0xc],0x808e9b3
+   0x09049906 <+1606>:	mov    DWORD PTR [esp+0x10],0x8
+   0x0904990e <+1614>:	lea    edx,[eax-0xc]
+   0x09049911 <+1617>:	mov    DWORD PTR [eax-0xc],ecx
+   0x09049914 <+1620>:	mov    DWORD PTR [esp+0x60],edx
+   0x09049918 <+1624>:	mov    DWORD PTR [esp+0xc],0x808e9b4
+   0x09049920 <+1632>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049928 <+1640>:	lea    ecx,[eax-0x10]
+   0x0904992b <+1643>:	mov    edx,DWORD PTR [esp+0x70]
+   0x0904992f <+1647>:	mov    DWORD PTR [eax-0x10],edx
+   0x09049932 <+1650>:	mov    DWORD PTR [esp+0x60],ecx
+   0x09049936 <+1654>:	mov    DWORD PTR [esp+0xc],0x808e9b5
+   0x0904993e <+1662>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049946 <+1670>:	mov    DWORD PTR ds:0x9054054,0x808e9ba
+   0x09049950 <+1680>:	mov    DWORD PTR [eax-0x14],0x808e9ba
+   0x09049957 <+1687>:	add    eax,0xffffffec
+   0x0904995a <+1690>:	mov    DWORD PTR [esp+0x60],eax
+   0x0904995e <+1694>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049966 <+1702>:	sub    esp,0x4
+   0x09049969 <+1705>:	push   DWORD PTR [esp+0x74]
+   0x0904996d <+1709>:	push   DWORD PTR [esp+0x70]
+   0x09049971 <+1713>:	push   eax
+   0x09049972 <+1714>:	call   0x904f670 <Func__IO_setb>
+   0x09049977 <+1719>:	add    esp,0x10
+   0x0904997a <+1722>:	lea    ecx,[eax+0x10]
+   0x0904997d <+1725>:	mov    DWORD PTR [esp+0x60],ecx
+   0x09049981 <+1729>:	mov    DWORD PTR [esp+0x1c],0x10
+   0x09049989 <+1737>:	mov    DWORD PTR [esp+0x14],ecx
+   0x0904998d <+1741>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049995 <+1749>:	mov    DWORD PTR [esp+0x18],0x1
+   0x0904999d <+1757>:	mov    DWORD PTR [esp+0xc],0x808e9c2
+   0x090499a5 <+1765>:	mov    eax,DWORD PTR [eax+0x7c]
+   0x090499a8 <+1768>:	mov    DWORD PTR [esp+0x20],eax
+   0x090499ac <+1772>:	mov    DWORD PTR [esp+0xc],0x808e9c6
+   0x090499b4 <+1780>:	mov    DWORD PTR [esp+0x10],0x8
+   0x090499bc <+1788>:	mov    ecx,DWORD PTR ds:0xa0540d4
+   0x090499c2 <+1794>:	xor    eax,DWORD PTR [ecx+0x14]
+   0x090499c5 <+1797>:	mov    DWORD PTR [esp+0x20],eax
+   0x090499c9 <+1801>:	mov    DWORD PTR [esp+0x14],eax
+   0x090499cd <+1805>:	mov    DWORD PTR [esp+0xc],0x808e9cd
+   0x090499d5 <+1813>:	mov    DWORD PTR [esp+0x10],0x18
+   0x090499dd <+1821>:	je     0x90499e9 <Func__IO_file_doallocate+1833>
+   0x090499df <+1823>:	mov    DWORD PTR [esp+0xc],0x808ea8a
+   0x090499e7 <+1831>:	jmp    0x90499f1 <Func__IO_file_doallocate+1841>
+   0x090499e9 <+1833>:	mov    DWORD PTR [esp+0xc],0x808e9d3
+   0x090499f1 <+1841>:	mov    eax,DWORD PTR [esp+0x60]
+   0x090499f5 <+1845>:	lea    ecx,[eax+0x7c]
+   0x090499f8 <+1848>:	mov    DWORD PTR [esp+0x60],ecx
+   0x090499fc <+1852>:	mov    DWORD PTR [esp+0x1c],0x7c
+   0x09049a04 <+1860>:	mov    DWORD PTR [esp+0x14],ecx
+   0x09049a08 <+1864>:	mov    DWORD PTR [esp+0xc],0x808e9d6
+   0x09049a10 <+1872>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049a18 <+1880>:	mov    ecx,DWORD PTR [eax+0x7c]
+   0x09049a1b <+1883>:	lea    edx,[eax+0x80]
+   0x09049a21 <+1889>:	mov    DWORD PTR [esp+0x60],edx
+   0x09049a25 <+1893>:	mov    DWORD PTR [esp+0x68],ecx
+   0x09049a29 <+1897>:	mov    DWORD PTR [esp+0xc],0x808e9d7
+   0x09049a31 <+1905>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049a39 <+1913>:	mov    ecx,DWORD PTR [eax+0x80]
+   0x09049a3f <+1919>:	lea    edx,[eax+0x84]
+   0x09049a45 <+1925>:	mov    DWORD PTR [esp+0x60],edx
+   0x09049a49 <+1929>:	mov    DWORD PTR [esp+0x70],ecx
+   0x09049a4d <+1933>:	mov    DWORD PTR [esp+0xc],0x808e9d8
+   0x09049a55 <+1941>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049a5d <+1949>:	mov    ecx,DWORD PTR [eax+0x84]
+   0x09049a63 <+1955>:	lea    edx,[eax+0x88]
+   0x09049a69 <+1961>:	mov    DWORD PTR [esp+0x60],edx
+   0x09049a6d <+1965>:	mov    DWORD PTR [esp+0x6c],ecx
+   0x09049a71 <+1969>:	mov    DWORD PTR [esp+0xc],0x808e9d9
+   0x09049a79 <+1977>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049a81 <+1985>:	mov    ecx,DWORD PTR [eax+0x88]
+   0x09049a87 <+1991>:	lea    edx,[eax+0x8c]
+   0x09049a8d <+1997>:	mov    DWORD PTR [esp+0x60],edx
+   0x09049a91 <+2001>:	mov    DWORD PTR [esp+0x64],ecx
+   0x09049a95 <+2005>:	mov    DWORD PTR [esp+0xc],0x808e9da
+   0x09049a9d <+2013>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049aa5 <+2021>:	mov    ecx,DWORD PTR [eax+0x8c]
+   0x09049aab <+2027>:	add    eax,0x90
+   0x09049ab0 <+2032>:	mov    DWORD PTR [esp+0x60],eax
+   0x09049ab4 <+2036>:	mov    DWORD PTR [esp+0xc],ecx
+   0x09049ab8 <+2040>:	mov    DWORD PTR [esp+0x10],0x8
+   0x09049ac0 <+2048>:	mov    edx,DWORD PTR [esp+0x18]
+   0x09049ac4 <+2052>:	add    esp,0x54
+   0x09049ac7 <+2055>:	pop    esi
+   0x09049ac8 <+2056>:	pop    edi
+   0x09049ac9 <+2057>:	ret    
+End of assembler dump.

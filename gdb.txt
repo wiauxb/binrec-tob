@@ -1,0 +1,112 @@
+Dump of assembler code for function _IO_file_doallocate:
+   0x0808e910 <+0>:	endbr32 
+   0x0808e914 <+4>:	push   ebp
+   0x0808e915 <+5>:	push   edi
+   0x0808e916 <+6>:	call   0x804acc7 <__x86.get_pc_thunk.di>
+   0x0808e91b <+11>:	add    edi,0x566e5
+   0x0808e921 <+17>:	push   esi
+   0x0808e922 <+18>:	push   ebx
+   0x0808e923 <+19>:	sub    esp,0x7c
+   0x0808e926 <+22>:	mov    eax,gs:0x14
+   0x0808e92c <+28>:	mov    DWORD PTR [esp+0x6c],eax
+   0x0808e930 <+32>:	xor    eax,eax
+   0x0808e932 <+34>:	mov    esi,DWORD PTR [esp+0x90]
+   0x0808e939 <+41>:	mov    ebx,DWORD PTR [esi+0x38]
+   0x0808e93c <+44>:	test   ebx,ebx
+   0x0808e93e <+46>:	js     0x808e9e0 <_IO_file_doallocate+208>
+   0x0808e944 <+52>:	mov    ebx,DWORD PTR [esi+0x94]
+   0x0808e94a <+58>:	mov    edx,0x80e5f60
+   0x0808e950 <+64>:	mov    eax,0x80e62b4
+   0x0808e956 <+70>:	mov    ecx,ebx
+   0x0808e958 <+72>:	sub    eax,edx
+   0x0808e95a <+74>:	sub    ecx,edx
+   0x0808e95c <+76>:	cmp    eax,ecx
+   0x0808e95e <+78>:	jbe    0x808ea80 <_IO_file_doallocate+368>
+   0x0808e964 <+84>:	sub    esp,0x8
+   0x0808e967 <+87>:	lea    eax,[esp+0x14]
+   0x0808e96b <+91>:	push   eax
+   0x0808e96c <+92>:	push   esi
+   0x0808e96d <+93>:	call   DWORD PTR [ebx+0x48]
+   0x0808e970 <+96>:	add    esp,0x10
+   0x0808e973 <+99>:	test   eax,eax
+   0x0808e975 <+101>:	js     0x808e9e0 <_IO_file_doallocate+208>
+   0x0808e977 <+103>:	mov    eax,DWORD PTR [esp+0x1c]
+   0x0808e97b <+107>:	and    eax,0xf000
+   0x0808e980 <+112>:	cmp    eax,0x2000
+   0x0808e985 <+117>:	je     0x808e9f0 <_IO_file_doallocate+224>
+   0x0808e987 <+119>:	mov    ebp,DWORD PTR [esp+0x40]
+   0x0808e98b <+123>:	lea    eax,[ebp-0x1]
+   0x0808e98e <+126>:	cmp    eax,0x1ffe
+   0x0808e993 <+131>:	ja     0x808e9e0 <_IO_file_doallocate+208>
+   0x0808e995 <+133>:	lea    esi,[esi+0x0]
+   0x0808e998 <+136>:	sub    esp,0xc
+   0x0808e99b <+139>:	mov    ebx,edi
+   0x0808e99d <+141>:	push   ebp
+   0x0808e99e <+142>:	call   0x805e730 <malloc>
+   0x0808e9a3 <+147>:	add    esp,0x10
+   0x0808e9a6 <+150>:	test   eax,eax
+   0x0808e9a8 <+152>:	je     0x808ea38 <_IO_file_doallocate+296>
+   0x0808e9ae <+158>:	add    ebp,eax
+   0x0808e9b0 <+160>:	push   0x1
+   0x0808e9b2 <+162>:	push   ebp
+   0x0808e9b3 <+163>:	push   eax
+   0x0808e9b4 <+164>:	push   esi
+   0x0808e9b5 <+165>:	call   0x8057910 <_IO_setb>
+   0x0808e9ba <+170>:	add    esp,0x10
+   0x0808e9bd <+173>:	mov    eax,0x1
+   0x0808e9c2 <+178>:	mov    ecx,DWORD PTR [esp+0x6c]
+   0x0808e9c6 <+182>:	xor    ecx,DWORD PTR gs:0x14
+   0x0808e9cd <+189>:	jne    0x808ea8a <_IO_file_doallocate+378>
+   0x0808e9d3 <+195>:	add    esp,0x7c
+   0x0808e9d6 <+198>:	pop    ebx
+   0x0808e9d7 <+199>:	pop    esi
+   0x0808e9d8 <+200>:	pop    edi
+   0x0808e9d9 <+201>:	pop    ebp
+   0x0808e9da <+202>:	ret    
+   0x0808e9db <+203>:	lea    esi,[esi+eiz*1+0x0]
+   0x0808e9df <+207>:	nop
+   0x0808e9e0 <+208>:	mov    ebp,0x2000
+   0x0808e9e5 <+213>:	jmp    0x808e998 <_IO_file_doallocate+136>
+   0x0808e9e7 <+215>:	lea    esi,[esi+eiz*1+0x0]
+   0x0808e9ee <+222>:	xchg   ax,ax
+   0x0808e9f0 <+224>:	mov    ecx,DWORD PTR [esp+0x2c]
+   0x0808e9f4 <+228>:	mov    ebx,DWORD PTR [esp+0x30]
+   0x0808e9f8 <+232>:	mov    eax,ecx
+   0x0808e9fa <+234>:	shrd   eax,ebx,0x8
+   0x0808e9fe <+238>:	mov    edx,eax
+   0x0808ea00 <+240>:	mov    eax,ebx
+   0x0808ea02 <+242>:	and    edx,0xfff
+   0x0808ea08 <+248>:	and    eax,0xfffff000
+   0x0808ea0d <+253>:	or     eax,edx
+   0x0808ea0f <+255>:	sub    eax,0x88
+   0x0808ea14 <+260>:	cmp    eax,0x7
+   0x0808ea17 <+263>:	ja     0x808ea48 <_IO_file_doallocate+312>
+   0x0808ea19 <+265>:	mov    ebp,DWORD PTR [esp+0x40]
+   0x0808ea1d <+269>:	or     DWORD PTR [esi],0x200
+   0x0808ea23 <+275>:	lea    eax,[ebp-0x1]
+   0x0808ea26 <+278>:	cmp    eax,0x1ffe
+   0x0808ea2b <+283>:	jbe    0x808e998 <_IO_file_doallocate+136>
+   0x0808ea31 <+289>:	jmp    0x808e9e0 <_IO_file_doallocate+208>
+   0x0808ea33 <+291>:	lea    esi,[esi+eiz*1+0x0]
+   0x0808ea37 <+295>:	nop
+   0x0808ea38 <+296>:	mov    eax,0xffffffff
+   0x0808ea3d <+301>:	jmp    0x808e9c2 <_IO_file_doallocate+178>
+   0x0808ea42 <+306>:	lea    esi,[esi+0x0]
+   0x0808ea48 <+312>:	mov    ebx,0xffffffe0
+   0x0808ea4e <+318>:	mov    eax,gs:0x0
+   0x0808ea54 <+324>:	sub    esp,0xc
+   0x0808ea57 <+327>:	mov    ebp,DWORD PTR [eax+ebx*1]
+   0x0808ea5a <+330>:	push   DWORD PTR [esi+0x38]
+   0x0808ea5d <+333>:	call   0x80945d0 <isatty>
+   0x0808ea62 <+338>:	mov    ecx,DWORD PTR gs:0x0
+   0x0808ea69 <+345>:	add    esp,0x10
+   0x0808ea6c <+348>:	mov    DWORD PTR [ecx+ebx*1],ebp
+   0x0808ea6f <+351>:	test   eax,eax
+   0x0808ea71 <+353>:	jne    0x808ea19 <_IO_file_doallocate+265>
+   0x0808ea73 <+355>:	jmp    0x808e987 <_IO_file_doallocate+119>
+   0x0808ea78 <+360>:	lea    esi,[esi+eiz*1+0x0]
+   0x0808ea7f <+367>:	nop
+   0x0808ea80 <+368>:	call   0x80541e0 <_IO_vtable_check>
+   0x0808ea85 <+373>:	jmp    0x808e964 <_IO_file_doallocate+84>
+   0x0808ea8a <+378>:	call   0x8070c10 <__stack_chk_fail_local>
+End of assembler dump.

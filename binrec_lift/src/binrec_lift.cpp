@@ -150,7 +150,7 @@ namespace binrec {
         }
 
         if (ctx.optimize) {
-            mpm.addPass(pb.buildPerModuleDefaultPipeline(OptimizationLevel::O3));
+            // mpm.addPass(pb.buildPerModuleDefaultPipeline(OptimizationLevel::O3));
         }
 
         if (ctx.optimize_better) {
