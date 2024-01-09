@@ -3,6 +3,12 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
+#include <asm/ldt.h>
+#include <linux/unistd.h>
+#include <sys/syscall.h>
+#include <iostream>
+#include <unistd.h>
+
 
 extern "C" {
 #include <asm/ldt.h>
@@ -74,30 +80,34 @@ static void print_user_desc(struct user_desc* ud){
     printf("useable %d\n", ud->useable);
 }
 
-static void init_new_tls(struct user_desc * ud){
-    ud->entry_number = -1;
-    int ret = syscall(SYS_set_thread_area, ud);
-    printf("retcode: %d\n", ret);
-    print_user_desc(ud);
+// static unsigned int init_new_tls(struct user_desc * ud){
+//     std::cout << "Help\n";
+//     struct user_desc dsi;
+//     dsi.entry_number = -1;
+//     syscall(SYS_set_thread_area, &dsi);
+//     syscall(SYS_get_thread_area, &dsi);
+//     unsigned int c = dsi.base_addr;
+//     std::cout << c << "\n";
+//     std::cout << dsi.entry_number << dsi.base_addr << "\n";
+//     return c;
+// }
 
-}
 
 static void init_gs(SegmentCache *ds)
 {
-    struct user_desc info; 
-    init_new_tls(&info);
-    int ret = syscall(SYS_get_thread_area, &info);
-    printf("retcode: %d\n", ret);
+    // struct user_desc info; 
+    // init_new_tls(&info);
+    ds->selector = get_gs();
+    syscall(SYS_get_thread_area, (struct user_desc*)ds);
+    ssize_t ret = SYSCALL_RET;  // FIXME: THIS KEEPS FAILING!!!???
+    printf("%d\n", ret);
+    struct user_desc info = {.entry_number = get_gs()};
+    syscall(SYS_get_thread_area, &info);
+    ret = SYSCALL_RET;  // FIXME: THIS KEEPS FAILING!!!???
+    printf("%d\n", ret);
     print_user_desc(&info);
-    // ds->selector = get_gs();
-    // SYSCALL1(SYS_get_thread_area, (struct user_desc*)ds);
-    // struct user_desc info = {.entry_number = get_gs()};
-    // printf("entry_number: %d\n", info.entry_number);
-    // SYSCALL1(SYS_get_thread_area, &info);
-    // ssize_t ret = SYSCALL_RET;  // FIXME: THIS KEEPS FAILING!!!???
-    // print_user_desc(&info);
-    // printf("----------------------------\n");
-    // print_user_desc((struct user_desc*)ds);
+    printf("----------------------------\n");
+    print_user_desc((struct user_desc*)ds);
 
     // if (ret) {
     // //    binrecrt_fdprintf(STDERR_FILENO, "get_thread_area returned ");

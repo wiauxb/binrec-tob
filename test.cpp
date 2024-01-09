@@ -17,15 +17,14 @@
         : "%eax", "%ebx"      \
     )
 
-extern "C" {
-    #include <syscall.h>
-    #include <unistd.h>
-    #include <linux/unistd.h>
-    #include <asm/ldt.h>
-    #include <string.h>
-    #include <cerrno>
-    #include <stdio.h>
-    #include <stdint.h>
+#include <iostream>
+#include <syscall.h>
+#include <unistd.h>
+#include <linux/unistd.h>
+#include <asm/ldt.h>
+#include <string.h>
+#include <sys/ptrace.h>
+
 
     ssize_t Func_SYSCALL0(int nr) {
         ssize_t ret;            
@@ -59,22 +58,49 @@ extern "C" {
         return gs;
     }
 
-    int main(int argc, char const *argv[])
+static void print_user_desc(struct user_desc* ud){
+    printf("entry_number %d\n", ud->entry_number);
+    printf("base_addr %d\n", ud->base_addr);
+    printf("limit %d\n", ud->limit);
+    printf("seg_32bit %d\n", ud->seg_32bit);
+    printf("contents %d\n", ud->contents);
+    printf("read_exec_only %d\n", ud->read_exec_only);
+    printf("limit_in_pages %d\n", ud->limit_in_pages);
+    printf("seg_not_present %d\n", ud->seg_not_present);
+    printf("useable %d\n", ud->useable);
+}
+
+int old_main(int argc, char const *argv[])
+{
+    struct user_desc ds;
+    ds.entry_number = get_gs();
+    int b = Func_SYSCALL1(SYS_get_thread_area, &ds);
+    SYSCALL1(SYS_get_thread_area, &ds);
+    int a = SYSCALL_RET;
+    std::cout << ds.entry_number << "\n";
+    std::cout << a << "\n";
+    std::cout << b << "\n";
+    
+    struct user_desc dsi;
+    dsi.entry_number = (unsigned int) -1;
+    SYSCALL1(SYS_set_thread_area, &dsi);
+    // SYSCALL1(SYS_get_thread_area, &dsi);
+    unsigned int c = dsi.entry_number;
+    std::cout << c << "\n";
+    return 0;
+}
+
+int main(int argc, char const *argv[])
+{
+    struct user_desc ds;
+    int gs = get_gs();
+    pid_t pid = syscall(__NR_gettid);
+    std::cout << pid << " " << getpid() << " " << pthread_self() << " " << strerror(errno) << "\n";
+    for (int i = gs; i <= gs; i++)
     {
-        // std::cout << get_gs() << " " << get_gs() << " " << get_gs() << "\n";
-        struct user_desc ds = {.entry_number = 0 };//get_gs()};
-        int b = Func_SYSCALL1(SYS_get_thread_area, &ds);
-        SYSCALL1(SYS_get_thread_area, &ds);
-        int a = SYSCALL_RET;
-        // std::cout << a << "\n";
-        // std::cout << b << "\n";
-        printf("%d\n", a);
-        printf("%d\n", b);
-        printf("%d %d %d %d\n", EFAULT, EINVAL, ENOSYS, ESRCH);
-        printf("%ld %d %s\n", syscall(SYS_get_thread_area, &ds), errno, strerror(errno));
-        // std::cout << EFAULT << " " << EINVAL << " " << ENOSYS << " " << ESRCH << "\n";
-        // std::cout << syscall(SYS_get_thread_area, &ds) << " " << errno << " " << strerror(errno) << "\n";
-        // std::cout << a << "\n";
-        return 0;
+        std::cout << ptrace(PTRACE_GET_THREAD_AREA, pthread_self(), i, &ds) << " " << i  << " " << strerror(errno) << "\n";
+        // print_user_desc(&ds);
     }
+    
+    return 0;
 }
